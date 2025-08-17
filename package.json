@@ -1,6 +1,6 @@
 {
   "name": "copy-env-keys-to-env-example",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Copies the environment variable keys from .env.local and .env to .env.example",
   "main": "index.js",
   "bin": {
