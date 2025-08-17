@@ -35,6 +35,16 @@ Then add a script:
 ```json
 {
   "scripts": {
+    "create:.env.example": "npx copy-env-keys-to-env-example"
+  }
+}
+```
+
+or
+
+```json
+{
+  "scripts": {
     "create:.env.example": "copy-env-keys-to-env-example"
   }
 }
