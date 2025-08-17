@@ -1,0 +1,28 @@
+{
+  "name": "copy-env-keys-to-env-example",
+  "version": "1.0.0",
+  "description": "Copies the environment variable keys from .env.local and .env to .env.example",
+  "main": "index.js",
+  "bin": {
+    "copy-env-keys-to-env-example": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajay-develops/copy-env-keys-to-env-example.git"
+  },
+  "keywords": [
+    "env",
+    ".env",
+    ".env.local",
+    ".env.example"
+  ],
+  "author": "ajay-develops",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajay-develops/copy-env-keys-to-env-example/issues"
+  },
+  "homepage": "https://github.com/ajay-develops/copy-env-keys-to-env-example#readme"
+}
