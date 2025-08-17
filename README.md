@@ -14,15 +14,74 @@ Copies environment variable keys from `.env` and `.env.local` into an `.env.exam
 
 ---
 
-## Install
+## Quick start (no install)
 
-Run via npx (recommended):
+Use via npx without adding any dependency:
 
 ```bash
 npx copy-env-keys-to-env-example
 ```
 
-Or add to your project:
+Print what would be written (no file changes):
+
+```bash
+npx copy-env-keys-to-env-example --dry-run
+```
+
+Custom output path:
+
+```bash
+npx copy-env-keys-to-env-example --output config/example.env
+# or
+npx copy-env-keys-to-env-example -o config/example.env
+```
+
+---
+
+## Pre-commit hook (ensure .env.example stays up to date)
+
+Keep `.env.example` updated automatically before every commit. Two options are shown below; the first uses npx without installing the package.
+
+### Option A: Husky (recommended)
+
+```bash
+# Install husky (dev-only)
+npm i -D husky
+
+# Initialize husky (creates .husky/ and git hook wiring)
+npx husky init
+
+# Add a pre-commit hook that runs the tool via npx without installing it
+npx husky add .husky/pre-commit "npx -y copy-env-keys-to-env-example && git add .env.example"
+
+# If you use a custom output path, update the hook accordingly, e.g.:
+# npx husky add .husky/pre-commit "npx -y copy-env-keys-to-env-example -o config/example.env && git add config/example.env"
+```
+
+### Option B: Native git hook (no extra deps)
+
+```bash
+mkdir -p .git/hooks
+cat > .git/hooks/pre-commit <<'SH'
+#!/usr/bin/env sh
+set -e
+
+# Update .env.example using npx without installing locally
+npx -y copy-env-keys-to-env-example
+
+# Stage the updated file
+git add .env.example
+SH
+chmod +x .git/hooks/pre-commit
+```
+
+For a custom output path, replace the command and the path in `git add` accordingly.
+
+---
+
+## Install (optional)
+
+If you prefer adding the tool to devDependencies:
 
 ```bash
 npm install --save-dev copy-env-keys-to-env-example
@@ -30,17 +89,7 @@ npm install --save-dev copy-env-keys-to-env-example
 yarn add -D copy-env-keys-to-env-example
 ```
 
-Then add a script:
-
-```json
-{
-  "scripts": {
-    "create:.env.example": "npx copy-env-keys-to-env-example"
-  }
-}
-```
-
-or
+Add a script for easy usage:
 
 ```json
 {
